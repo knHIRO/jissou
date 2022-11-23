@@ -1,4 +1,3 @@
-kondo.yoshihiro
 <!DOCTYPE html>
 <html>
   <head>
@@ -12,6 +11,74 @@ kondo.yoshihiro
   </head>
 
   <body>
+    <header>
+
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="/"><span>Bookers</span></a>
+          <button class="navbar-toggler"
+          <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <ul class="navbar-nav ml-auto">
+          <% if admin_signed_in? %>
+            <li>
+            <%= link_to class:"nav-link text-light" do %>
+            <i class="fas fa-home"></i>商品一覧
+            <% end %>
+            </li>
+          <li>
+            <%= link_to class:"nav-link text-light" do %>
+            <i class="fas fa-users"></i>会員一覧
+            <% end %>
+          </li>
+          <li>
+            <%= link_to class:"nav-link text-light" do %>
+            <i class="fas fa-book-open"></i>注文履歴一覧
+            <% end %>
+          </li>
+          <%= link_to class:"nav-link text-light" do %>
+            <i class="fas fa-book-open"></i>ジャンル一覧
+            <% end %>
+          </li>
+          <li>
+            <%= link_to method: :delete,class:"nav-link text-light" do %>
+           <i class="fas fa-sign-out-alt"></i>ログアウト
+            <% end %>
+          </li>
+          <% else %>
+          <li>
+            <%= link_to class:"nav-link text-light" do %>
+            <i class="fas fa-home"></i> About
+            <% end %>
+          </li>
+          <li>
+            <%= link_to class:"nav-link text-light" do %>
+            <i class="fas fa-link"></i> 商品一覧
+            <% end %>
+          </li>
+          <li>
+            <%= link_to class:"nav-link text-light" do %>
+            <i class="fas fa-user-plus"></i> 新規登録
+            <% end %>
+          </li>
+          <li>
+            <%= link_to class:"nav-link text-light" do %>
+           <i class="fas fa-sign-in-alt"></i> ログイン
+            <% end %>
+          </li>
+          <% end %>
+          </ul>
+        </div>
+      </nav>
+
+
+    </header>
+
+<main>
+    <p id="notice"><%= flash[:notice] %></p>
     <%= yield %>
+    </main>
+
   </body>
 </html>

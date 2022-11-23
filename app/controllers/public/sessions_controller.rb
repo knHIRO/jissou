@@ -35,10 +35,11 @@ def customer_state
   if @customer.valid_password?(params[:customer][:password])
     ## 【処理内容3】
   if @customer.is_deleted
-    redirect_to new_customer_registration_path 
+    redirect_to new_customer_registration_path
   end
   if @customer.valid_password?(params[:customer][:password]) && @customer.is_deleted
-  
+  redirect_to new_customer_registration_path
+  end
   end
 end
 end
