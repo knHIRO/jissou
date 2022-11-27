@@ -33,6 +33,25 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       # t.datetime :locked_at
 
 
+
+      #t.string :postcode
+
+      #t.string :address_city_street_building
+
+      #add_column :customers, :postcode, :string
+      #add_column :customers, :prefecture_code, :integer
+      #add_column :customers, :address_city_street_building, :string
+      #add_column :customers, :address_street, :string
+      #add_column :customers, :address_building, :string
+
+      t.string :last_name, null: false
+      t.string :first_name, null: false
+      t.string :last_name_kana, null: false
+      t.string :first_name_kana, null: false
+      t.string :postal_code, null: false
+      t.string :address, null: false
+      t.string :telephone_number, null: false
+      t.boolean :is_deleted, null: false, default: false
       t.timestamps null: false
     end
 
