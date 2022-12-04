@@ -1,5 +1,35 @@
-<h2>商品一覧index</h2>
+<div class="container">
+	<div class="row">
+	  <div class="offset-md-1 col-md-10 offset-md-1">
+      <div class="form-group row form-inline ">
+      <h2>商品一覧index</h2>
+      <li>
+         <%= link_to new_admin_item_path, class:"btn btn-file-puls" do %>puls
+         <% end %>
+       </li>
+      </div>
 
+        <table class="table">
+                <thead>
+                  <tr>
+                    <th>商品ID</th>
+                    <th>商品名</th>
+                    <th>税抜価格</th>
+                    <th>ジャンル</th>
+                    <th>ステータス</th>
+                  </tr>
+                </thead>
+              <tbody>
+
+
+              </tbody>
+
+            </table>
+
+
+    </div>
+  </div>
+</div>
 <%= @items.each do |list| %>
 
   <p>タイトル</p>

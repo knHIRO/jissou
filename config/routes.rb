@@ -33,8 +33,8 @@ get 'admin' => 'admin/homes#top'
 resources :homes, only: [:top, :about]
 namespace :admin do
  resources :items, only: [:index, :new, :show, :edit]
- resources :genres, only: [:index, :edit]
- resources :customers, pnly: [:index, :show, :edit]
+ resources :genres, only: [:index, :edit, :create, :update]
+ resources :customers, only: [:index, :show, :edit]
 
 end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -1,1 +1,53 @@
-<h2>ジャンル一覧・追加</h2>
+    <h2>ジャンル一覧・追加</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 ">
+
+       <%= form_with model: [:admin, @genre] do |f| %>
+      <div class="form-group row form-inline">
+       <%= f.label :name, "ジャンル名", class: "col-md-4" %>
+       <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "col-md-4" %>
+
+
+
+      <%= f.submit '新規登録', class:"btn btn-success" %>
+      <% end %>
+
+      </div>
+      <table class="table">
+          <thead>
+            <tr>
+              <th>ジャンル</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @genres.each do |genre| %>
+            <tr>
+              <th>
+                <span>
+                  <%= link_to genre.name, edit_admin_genre_path(genre) %>
+                </span>
+              </th>
+              <th><%= link_to '編集する', edit_admin_genre_path(genre), class:"btn btn-sm btn-success" %></th>
+              </tr>
+            <tr>
+              <th>プリン</th>
+              <th></th>
+            </tr>
+            <tr>
+              <th>焼き菓子</th>
+              <th></th>
+            </tr>
+            <tr>
+              <th>キャンディ</th>
+              <th></th>
+            </tr>
+            <% end %>
+          </tbody>
+
+      </table>
+
+
+    </div>
+  </div>
+  </div>
