@@ -1,1 +1,54 @@
-<h2>商品詳細画面show</h2>
+<div class="container">
+    <h2>商品詳細画面show</h2>
+	<div class="row">
+	  <div class="offset-md-1 col-md-4">
+
+      <%= link_to new_admin_item_path(@items.id), class: "col-md-4" do %>
+      <%= image_tag @items.get_profile_image(100,100) %>
+      <% end %>
+    </div>
+    <div class="col-md-5">
+
+      <%= form_with model: [:admin, @item] do |f| %>
+
+      <div class="form-group row form-inline ">
+      <%= f.label :name, "商品名", class: "col-md-4" %>
+      <span>
+        <%= link_to @items.name, new_admin_item_path(@items.id) %>
+      </span>
+
+      </div>
+      <div class="form-group row form-inline ">
+        <%= f.label :introduction, "商品説明", class: "col-md-4" %>
+        <span>
+        <%= link_to @items.introduction, new_admin_item_path(@items.id) %>
+        </span>
+      </div>
+
+      <div class="form-group row form-inline ">
+        <%= f.label :genre_id, "ジャンル", class: "col-md-4" %>
+        <span>
+        <%= link_to @items.genre_id, new_admin_item_path(@items.id) %>
+        </span>
+      </div>
+
+      <div class="form-group row form-inline ">
+        <%= f.label :price, "税抜価格", class: "col-md-4" %>
+        <span>
+        <%= link_to @items.price, new_admin_item_path(@items.id) %>
+        </span>
+      </div>
+
+      <div class="form-group row form-inline ">
+        <%= f.label :is_active, "販売ステータス", class: "col-md-4" %>
+        <span>
+        <%= link_to @items.is_active, new_admin_item_path(@items.id) %>
+        </span>
+      </div>
+
+      <%= link_to '編集する', edit_admin_item_path(@items), class:"btn btn-sm btn-success" %>
+
+      <% end %>
+    </div>
+  </div>
+</div>

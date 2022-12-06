@@ -1,1 +1,60 @@
-<h2>商品編集画面edit</h2>
+<div class="container">
+	<div class="row">
+	  <div class="offset-md-1 col-md-10 offset-md-1">
+	    <h2>商品編集画面edit</h2>
+      <%= form_with model: [:admin, @item] do |f| %>
+      <div class="form-group row form-inline ">
+      <%= f.label :profile_image, "商品画像", class: "col-md-4" %> 
+      <%= f.file_field :profile_image, class:"form-control-file item_image", placeholder: "プロフィール画像", accept: "image/*", class: "col-md-4" %>
+      </div>
+
+       <div class="form-group row form-inline ">
+       <%= f.label :name, "商品名", class: "col-md-4" %>
+       <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "col-md-3" %>
+       </div>
+
+       <div class="form-group row form-inline ">
+       <%= f.label :introduction, "商品説明", class: "col-md-4" %>
+       <%= f.text_field :introduction, autofocus: true, autocomplete: "introduction", class: "col-md-3" %>
+       </div>
+       
+        <div class="form-group row form-inline">
+          <%= f.label :genre_id, "ジャンル", class: "col-md-4" %>
+          <%= f.text_field :genre_id, autofocus: true, autocomplete: "genre_id", class: "col-md-3" %>
+          <label for="exampleFormControlSelect1"></label>
+          <select class="form-control" id="exampleFormControlSelect1">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </div>
+        
+        <div class="form-group row form-inline ">
+       <%= f.label :price, "税抜価格", class: "col-md-4" %>
+       <%= f.text_field :price, autofocus: true, autocomplete: "price", class: "col-md-3" %>円
+       </div>
+       
+       <div class="form-group row form-inline ">
+       <%= f.label :is_active, "販売ステータス", class: "col-md-4" %>
+         <div class="form-check">
+           <input class="form-check-input" type="radio" id="radio_1_1" name="radio_1" value="1" checked>
+           <label class="form-check-label" for="radio_1_1">販売中</label>
+           <input class="form-check-input" type="radio" id="radio_1_1" name="radio_1" value="1" checked>
+           <label class="form-check-label" for="radio_1_1">販売停止中</label>
+         </div>
+       </div>
+       
+      <div class="form-group">
+        <%= f.submit '変更を保存', class:"btn btn-success" %>
+        </div>
+
+      <% end %>
+
+
+
+
+    </div>
+  </div>
+</div>

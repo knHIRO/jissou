@@ -32,7 +32,7 @@ get 'admin' => 'admin/homes#top'
 
 resources :homes, only: [:top, :about]
 namespace :admin do
- resources :items, only: [:index, :new, :show, :edit]
+ resources :items, only: [:index, :new, :show, :edit, :create, :update]
  resources :genres, only: [:index, :edit, :create, :update]
  resources :customers, only: [:index, :show, :edit]
 
