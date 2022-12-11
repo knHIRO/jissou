@@ -15,8 +15,32 @@
             </tr>
           </thead>
         <tbody>
+          <% @orders.each do |order| %>
+          <tr>
+            <th>
+              <span>
+                <%= link_to order.updated_at, admin_order_path(order.id) %>
+              </span>
+            </th>
+            <th>
+              <span>
+                <%= @orders.customer_id %>
+              </span>
+            </th>
+            <th>
+              <span>
+                <%= @orders.amount %>
+              </span>
+            </th>
+            <th>
+              <span>
+                <%= @order.status %>
+              </span>
+            </th>
+            </tr>
 
 
+          <% end %>
         </tbody>
 
       </table>

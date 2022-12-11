@@ -10,45 +10,45 @@
       </div>
 
         <table class="table">
-                <thead>
-                  <tr>
-                    <th>商品ID</th>
-                    <th>商品名</th>
-                    <th>税抜価格</th>
-                    <th>ジャンル</th>
-                    <th>ステータス</th>
-                  </tr>
-                </thead>
-              <tbody>
-                <% @items.each do |item| %>
-                  <tr>
-                    <th>
-                      <%= link_to admin_item_path(item.id) do %>
+          <thead>
+            <tr>
+              <th>商品ID</th>
+              <th>商品名</th>
+              <th>税抜価格</th>
+              <th>ジャンル</th>
+              <th>ステータス</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @items.each do |item| %>
+              <tr>
+                <th>
+                  <%= link_to admin_item_path(item.id) do %>
 
-                      <% end %>
-                    </th>
-                    <th>
-                      <span>
-                       <%= link_to item.name, new_admin_item_path(item.id) %>
-                      </span>
-                    </th>
-                    <th>
-                      <span>
-                        <%= link_to item.genre_id, new_admin_item_path(item.id) %>
-                      </span>
-                    </th>
-                    <th>
-                      <span>
-                        <%= link_to item.is_active, new_admin_item_path(item.id) %>
-                      </span>
-                    </th>
-                  </tr>
-                <% end %>
+                  <% end %>
+                </th>
+                <th>
+                  <span>
+                   <%= link_to item.name, new_admin_item_path(item.id) %>
+                  </span>
+                </th>
+                <th>
+                  <span>
+                    <%= link_to item.genre_id, new_admin_item_path(item.id) %>
+                  </span>
+                </th>
+                <th>
+                  <span>
+                    <%= link_to item.is_active, new_admin_item_path(item.id) %>
+                  </span>
+                </th>
+              </tr>
+            <% end %>
 
 
-              </tbody>
+          </tbody>
 
-            </table>
+        </table>
 
 
     </div>

@@ -15,9 +15,9 @@
           <% @customers.each do |customer| %>
                   <tr>
                     <th>
-                      <%= link_to admin_customer_path(customer.id) do %>
-
-                      <% end %>
+                      <span>
+                        <%= customer.id %>
+                      </span>
                     </th>
                     <th>
                       <span>
@@ -26,12 +26,12 @@
                     </th>
                     <th>
                       <span>
-                        <%= link_to customer.email, new_customer_registration_path(customer.id) %>
+                        <%= customer.email %>
                       </span>
                     </th>
                     <th>
                       <span>
-                        <%= link_to customer.is_deleted, new_customer_registration_path(customer.id) %>
+                        <%= customer.is_deleted %>
                       </span>
                     </th>
                   </tr>

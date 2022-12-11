@@ -17,7 +17,7 @@ namespace :public do
  resource :customers, only:[:show, :edit, :confirmation]
  resources :cart_items, only: [:index, :show]
  resources :orders, only:[:new, :completion, :confirmation, :index, :show]
- resources :address, only:[:index, :edit]
+ resources :addresses, only:[:index, :edit, :create, :update, :destroy]
 end
 # 管理者用
 # URL /admin/sign_in ...
@@ -35,6 +35,8 @@ namespace :admin do
  resources :items, only: [:index, :new, :show, :edit, :create, :update]
  resources :genres, only: [:index, :edit, :create, :update]
  resources :customers, only: [:index, :show, :edit, :update]
+ resources :orders, only: [:show, :update]
+ resources :order_details, only: [:update]
 
 end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

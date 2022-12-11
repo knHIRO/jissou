@@ -1,1 +1,98 @@
+<div class="container">
 <h2>注文履歴詳細</h2>
+  <div class="row">
+    <div class="col-md-6 offset-md-1">
+      <p class="font-weight-bold">登録情報</p>
+      <table class="table table-bordered">
+        <tbody>
+        <%= form_with model: [:public, @order] do |f| %>
+        <tr>
+          <th><%= f.label :updated_at, "注文日", class: "col-md-4" %></th>
+          <td><span><%= @order.updated_at %></span></td>
+        </tr>
+
+        <tr>
+          <th><%= f.label :postal_code, "配送先", class: "col-md-4" %></th>
+          <td><span><%= @order.postal_code %></span></td>
+          <td><span><%= @order.address %></span></td>
+          <td><span><%= @order.name %></span></td>
+        </tr>
+
+        <tr>
+          <th><%= f.label :payment_method, "支払方法", class: "col-md-4" %></th>
+          <td><span><%= @order.payment_method %></span></td>
+        </tr>
+
+        <tr>
+          <th><%= f.label :status, "ステータス", class: "col-md-4" %></th>
+          <td><span><%= @order.address %></span></td>
+        </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+
+
+    <div class="col-md-4 offset-md-1">
+      <p class="font-weight-bold">請求情報</p>
+      <table class="table table-bordered">
+        <tbody>
+        <%= form_with model: [:public, @order] do |f| %>
+        <tr>
+          <th><%= f.label :updated_at, "商品合計", class: "col-md-4" %></th>
+          <td><span><%= @order.updated_at %></span></td>
+        </tr>
+
+        <tr>
+          <th><%= f.label :postal_code, "配送料", class: "col-md-4" %></th>
+          <td><span><%= @order.postal_code %></span></td>
+          <td><span><%= @order.address %></span></td>
+          <td><span><%= @order.name %></span></td>
+        </tr>
+
+        <tr>
+          <th><%= f.label :payment_method, "ご請求額", class: "col-md-4" %></th>
+          <td><span><%= @order.payment_method %></span></td>
+        </tr>
+
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="offset-md-1 col-md-10 offset-md-1">
+      <p class="font-weight-bold">登録情報</p>
+      <table class="table table-bordered">
+        <tbody>
+        <%= form_with model: [:public, @order] do |f| %>
+        <tr>
+          <th><%= f.label :updated_at, "注文日", class: "col-md-4" %></th>
+          <td><span><%= @order.updated_at %></span></td>
+        </tr>
+
+        <tr>
+          <th><%= f.label :postal_code, "配送先", class: "col-md-4" %></th>
+          <td><span><%= @order.postal_code %></span></td>
+          <td><span><%= @order.address %></span></td>
+          <td><span><%= @order.name %></span></td>
+        </tr>
+
+        <tr>
+          <th><%= f.label :payment_method, "支払方法", class: "col-md-4" %></th>
+          <td><span><%= @order.payment_method %></span></td>
+        </tr>
+
+        <tr>
+          <th><%= f.label :status, "ステータス", class: "col-md-4" %></th>
+          <td><span><%= @order.address %></span></td>
+        </tr>
+        <% end %>
+        </tbody>
+      </table>
+
+
+    </div>
+  </div>
+</div>

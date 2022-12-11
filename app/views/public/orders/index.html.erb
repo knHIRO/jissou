@@ -1,1 +1,53 @@
+<div class="container">
 <h2>注文履歴一覧</h2>
+  <div class="row">
+    <div class="offset-md-1 col-md-10 offset-md-1">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>注文日</th>
+            <th>発送日</th>
+            <th>注文商品</th>
+            <th>支払金額</th>
+            <th>ステータス</th>
+            <th>注文詳細</th>
+          </tr>
+        </thead>
+
+        <tbody>
+	    <%= form_with model: [:public, @order] do |f| %>
+        <tr>
+          <th>
+            <span><%= @order.updated_at %></span>
+          </th>
+
+          <th>
+            <span><%= @order.postal_code %></span>
+            <span><%= @order.address %></span>
+            <span><%= @order.name %></span>
+          </th>
+
+          <th>
+            <span><%= @order.postal_code %></span>
+          </th>
+
+          <th>
+            <span><%= @order.total_payment %></span>
+          </th>
+
+          <th>
+            <span><%= @order.status %></span>
+          </th>
+
+          <th>
+            <span><%= link_to '表示する', public_order_path(@orders), class:"btn btn-sm btn-success" %></span>
+          </th>
+        </tr>
+        </tbody>
+      </table>
+
+      <% end %>
+
+    </div>
+  </div>
+</div>
