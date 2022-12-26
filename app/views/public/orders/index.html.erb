@@ -6,7 +6,7 @@
         <thead>
           <tr>
             <th>注文日</th>
-            <th>発送日</th>
+            <th>発送先</th>
             <th>注文商品</th>
             <th>支払金額</th>
             <th>ステータス</th>
@@ -15,38 +15,40 @@
         </thead>
 
         <tbody>
-	    <%= form_with model: [:public, @order] do |f| %>
+          <% @orders.each do |order| %>
+	    <%#= form_with model: [:public, @order] do |f| %>
         <tr>
           <th>
-            <span><%= @order.updated_at %></span>
+            <span><%= order.updated_at %></span>
           </th>
 
           <th>
-            <span><%= @order.postal_code %></span>
-            <span><%= @order.address %></span>
-            <span><%= @order.name %></span>
+            <span><%= order.postal_code %></span>
+            <span><%= order.address %></span>
+            <span><%= order.name %></span>
           </th>
 
           <th>
-            <span><%= @order.postal_code %></span>
+　　　　 <% order.order_details.each do |order_detail| %>
+            <span><%= order_detail.item.name %></span>
+　　　　 <% end %>
+          </th>
+          <th>
+            <span><%= order.total_payment %></span>
           </th>
 
           <th>
-            <span><%= @order.total_payment %></span>
+            <span><%= order.status %></span>
           </th>
 
           <th>
-            <span><%= @order.status %></span>
-          </th>
-
-          <th>
-            <span><%= link_to '表示する', public_order_path(@orders), class:"btn btn-sm btn-success" %></span>
+            <span><%= link_to '表示する', public_order_path(order), class:"btn btn-sm btn-success" %></span>
           </th>
         </tr>
+      <% end %>
         </tbody>
       </table>
 
-      <% end %>
 
     </div>
   </div>

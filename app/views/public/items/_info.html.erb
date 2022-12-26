@@ -1,0 +1,21 @@
+<table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>ジャンル検索</th>
+            </tr>
+          </thead>
+          <tbody>
+
+          <% genres.each do |genre| %>
+            <tr>
+              <th>
+                <span>
+                  <%= link_to genre.name, edit_admin_genre_path(genre) %>
+                </span>
+              </th>
+            </tr>
+
+            <% end %>
+
+          </tbody>
+        </table>

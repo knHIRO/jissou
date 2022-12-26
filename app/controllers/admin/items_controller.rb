@@ -3,6 +3,7 @@ class Admin::ItemsController < ApplicationController
   def index
     @item = Item.new
     @items = Item.all
+    @genres = Genre.all
   end
   def new
     @item = Item.new

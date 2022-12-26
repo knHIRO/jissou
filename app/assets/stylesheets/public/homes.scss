@@ -1,3 +1,8 @@
 // Place all the styles related to the public/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.<div class="offset-md-1 col-md-8"> {
+  background-image: url("<%= asset_path('kake1.jpg') %>")
+  height: 800px;
+  background-size:cover;
+}

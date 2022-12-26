@@ -1,1 +1,18 @@
-<h2>商品一覧index</h2>
+<div class="container">
+	<div class="row">
+	  <div class="col-md-3" >
+	    <%= render 'public/items/info', genres: @genres %>
+	  </div>
+	    <div class="col-md-7">
+	    <h2>商品一覧index</h2>
+        <% @items.each do |item| %>
+        <%= link_to public_item_path(item), class: "col-md-4" do %>
+        <%= image_tag item.get_profile_image(100,100) %>
+        <% end %>
+        <%= item.name %>
+        <%= item.price %>
+        <% end %>
+
+    </div>
+	</div>
+</div>

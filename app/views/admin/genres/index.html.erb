@@ -25,23 +25,12 @@
             <tr>
               <th>
                 <span>
-                  <%= link_to genre.name, edit_admin_genre_path(genre) %>
+                  <%= genre.name %>
                 </span>
               </th>
               <th><%= link_to '編集する', edit_admin_genre_path(genre), class:"btn btn-sm btn-success" %></th>
-              </tr>
-            <tr>
-              <th>プリン</th>
-              <th></th>
             </tr>
-            <tr>
-              <th>焼き菓子</th>
-              <th></th>
-            </tr>
-            <tr>
-              <th>キャンディ</th>
-              <th></th>
-            </tr>
+
             <% end %>
           </tbody>
 

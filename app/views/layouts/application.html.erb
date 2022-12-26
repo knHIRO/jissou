@@ -15,8 +15,8 @@
 
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand btn btn-outline-dark nav-link text-dark" href="#">LOGO</a>
-
+          <%= link_to root_path, class:"navbar-brand btn btn-outline-dark nav-link text-dark" do %>LOGO
+          <% end %>
           <ul class="navbar-nav ml-auto">
 
           <% if admin_signed_in? %>
@@ -43,7 +43,7 @@
 
            <% elsif customer_signed_in? %>
             <li>
-            <%= link_to public_customers_path(current_customer), class:"btn btn-outline-dark nav-link text-dark mr-5" do %>マイページ
+            <%= link_to public_customers_path, class:"btn btn-outline-dark nav-link text-dark mr-5" do %>マイページ
             <% end %>
             </li>
           <li>

@@ -1,1 +1,37 @@
-<h2>商品詳細show</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3" >
+	    <%= render 'public/items/info', genres: @genres %>
+	  </div>
+	  <div class="col-md-2">
+	      <%= link_to new_admin_item_path(@items.id), class: "col-md-4" do %>
+      <%= image_tag @items.get_profile_image(100,100) %>
+      <% end %>
+      </div>
+      <div class="col-md-3">
+	  <%= form_with model: CartItem.new, url: public_cart_items_path do |f| %>
+	    <div class="form-group row form-inline ">
+          <span>
+            <%= @items.name %>
+          </span>
+
+        </div>
+        <div class="form-group row form-inline ">
+          <span>
+            <%= @items.introduction %>
+          </span>
+          </div>
+          <div class="form-group row form-inline ">
+          <span>
+            <%= @items.price %>
+          </span>
+          <%= f.hidden_field :item_id, value: @items.id %>
+          <%= f.select :amount, *[1..9] %>
+          <%= f.submit 'カートに入れる', class:"btn btn-sm btn-success"  %>
+        </div>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>

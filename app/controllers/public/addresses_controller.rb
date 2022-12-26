@@ -2,15 +2,16 @@ class Public::AddressesController < ApplicationController
    def index
     @address = Address.new
     @addresses = Address.all
+
    end
 
    def create
     # １.&2. データを受け取り新規登録するためのインスタンス作成
-    if @Address= Address.new(address_params)
+    @address= Address.new(address_params)
 
-    #@book.user_id = current_user.id
+    @address.customer_id = current_customer.id
     # 3. データをデータベースに保存するためのsaveメソッド実行
-    #if @address.save
+    if @address.save
     # 4. トップ画面へリダイレクト
     flash[:notice]="You have created book successfully."
 
@@ -39,7 +40,7 @@ class Public::AddressesController < ApplicationController
   def destroy
     @address = Address.find(params[:id])
     @address.destroy
-    redirect_to '/addresses'
+    redirect_to public_addresses_path
   end
 
   private

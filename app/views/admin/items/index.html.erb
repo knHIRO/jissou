@@ -23,23 +23,26 @@
             <% @items.each do |item| %>
               <tr>
                 <th>
-                  <%= link_to admin_item_path(item.id) do %>
-
-                  <% end %>
+                  <%= item.id %>
                 </th>
                 <th>
                   <span>
-                   <%= link_to item.name, new_admin_item_path(item.id) %>
+                   <%= item.name %>
                   </span>
                 </th>
                 <th>
                   <span>
-                    <%= link_to item.genre_id, new_admin_item_path(item.id) %>
+                   <%= item.price %>
                   </span>
                 </th>
                 <th>
                   <span>
-                    <%= link_to item.is_active, new_admin_item_path(item.id) %>
+                    <%= item.genre_id %>
+                  </span>
+                </th>
+                <th>
+                  <span>
+                    <%= item.is_active %>
                   </span>
                 </th>
               </tr>

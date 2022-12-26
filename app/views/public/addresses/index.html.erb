@@ -34,29 +34,30 @@
           </tr>
         </thead>
 
+        <% @addresses.each do |address| %>
         <tbody>
-	    <%= form_with model: [:public, @address] do |f| %>
+	    <%#= form_with model: [:public, @address] do |f| %>
         <tr>
           <th>
-            <span><%= @address.postal_code %></span>
+            <span><%= address.postal_code %></span>
           </th>
           <th>
-            <span><%= @address.address %></span>
+            <span><%= address.address %></span>
           </th>
           <th>
-            <span><%= @address.name %></span>
+            <span><%= address.name %></span>
           </th>
           <th>
             <span>
-              <%= link_to '編集する', edit_public_address_path(@addresses), class:"btn btn-sm btn-success" %>
-              <%= link_to '削除する', public_addresses_path, class:"btn btn-sm btn-danger", method: :delete,"data-confirm" => "本当に削除しますか？" %>
+              <%= link_to '編集する', edit_public_address_path(address), class:"btn btn-sm btn-success" %>
+              <%= link_to '削除する', public_address_path(address), class:"btn btn-sm btn-danger", method: :delete,"data-confirm" => "本当に削除しますか？" %>
             </span>
           </th>
         </tr>
         </tbody>
+      <% end %>
       </table>
 
-      <% end %>
     </div>
   </div>
 </div>
