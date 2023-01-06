@@ -7,10 +7,26 @@ class Public::CartItemsController < ApplicationController
   end
 
   def create
-    cart_item = CartItem.new(cart_item_params)
-    cart_item.customer_id = current_customer.id
-    cart_item.save
+    @cart_item = CartItem.new(cart_item_params)
+    @cart_items = current_customer.cart_items
+
+    if @cart_items.find_by(item_id: params[:cart_item][:item_id])
+      @cart_items.find_by(item_id: params[:cart_item][:item_id]).update(amount: @cart_items.find_by(item_id: params[:cart_item][:item_id]).amount.to_i + @cart_item.amount.to_i)
+    else
+      @cart_item.customer_id = current_customer.id
+      @cart_item.save
+    end
     redirect_to public_cart_items_path
+  end
+
+  def update
+    @cart_item = CartItem.find(params[:id])
+    if @cart_item.update(cart_item_params)
+      #flash[:notice]="You have updated customer successfully."
+      redirect_to public_cart_items_path
+    else
+      render :index
+    end
   end
 
   def destroy

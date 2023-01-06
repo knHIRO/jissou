@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row">
 	  <div class="offset-md-1 col-md-10 offset-md-1">
-      <h2>花子さんの会員詳細</h2>
+      <h2><%= @customers.last_name %><%= @customers.first_name %>さんの会員詳細</h2>
 
       <%= form_with model: [:admin, @customer] do |f| %>
 
@@ -15,14 +15,14 @@
       <div class="form-group row form-inline ">
         <%= f.label :last_name, "氏名", class: "col-md-4" %>
         <span>
-        <%= @customers.last_name %>
+        <%= @customers.last_name %><%= @customers.first_name %>
         </span>
       </div>
 
       <div class="form-group row form-inline ">
         <%= f.label :last_name_kana, "フリガナ", class: "col-md-4" %>
         <span>
-        <%= @customers.last_name_kana %>
+        <%= @customers.last_name_kana %><%= @customers.first_name_kana %>
         </span>
       </div>
 
@@ -55,16 +55,13 @@
       </div>
 
       <div class="form-group row form-inline ">
-        <%= f.label :email, "メールアドレス", class: "col-md-4" %>
-        <span>
-        <%= @customers.email %>
-        </span>
-      </div>
-
-      <div class="form-group row form-inline ">
         <%= f.label :is_deleted, "会員ステータス", class: "col-md-4" %>
         <span>
-        <%= @customers.is_deleted %>
+        <% if @customers.is_deleted==true %>
+          退会
+        <% else %>
+          有効
+        <% end %>
         </span>
       </div>
       <div class="form-group row form-inline ">

@@ -34,11 +34,12 @@
 　　　　 <% end %>
           </th>
           <th>
-            <span><%= order.total_payment %></span>
+            <span><%= order.total_payment %>円</span>
           </th>
 
           <th>
-            <span><%= order.status %></span>
+            <span><%= order.status_i18n %></span>
+            <%#= f.hidden_field :status, :value => order.status %>
           </th>
 
           <th>

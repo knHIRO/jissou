@@ -2,8 +2,9 @@ class Item < ApplicationRecord
 
   has_one_attached :profile_image
   has_many :cart_items, dependent: :destroy
-  belongs_to :genres
+  belongs_to :genre
   has_many :order_details, dependent: :destroy
+  #enum is_active: { sale: 0, standstill: 1 }
 
   def get_profile_image(width,height)
      unless profile_image.attached?
@@ -18,5 +19,5 @@ class Item < ApplicationRecord
 
 #   def with_tax_price
 #     (price * 1.1).floor
-# 　end
+#   end
 end

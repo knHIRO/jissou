@@ -31,7 +31,11 @@
                     </th>
                     <th>
                       <span>
-                        <%= customer.is_deleted %>
+                        <% if customer.is_deleted==true %>
+                          退会
+                        <% else %>
+                          有効
+                        <% end %>
                       </span>
                     </th>
                   </tr>

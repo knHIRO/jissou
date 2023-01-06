@@ -1,1 +1,125 @@
+<div class="container">
 <h2>注文履歴詳細</h2>
+	<div class="row">
+      <div class="col-md-12">
+	    <div class="form-group row form-inline ">
+	      <h5>購入者</h5>
+	    <span>
+	    <%= @order.customer.last_name %><%= @order.customer.first_name %>
+	    </span>
+	    </div>
+
+	    <div class="form-group row form-inline ">
+	      <h5>注文日</h5>
+	    <span>
+	    <%= @order.updated_at %>
+	    </span>
+	    </div>
+
+	    <div class="form-group row form-inline ">
+	      <h5>配送先</h5>
+	    <span>
+	    <%= @order.postal_code %><%= @order.address %><%= @order.name %>
+	    </span>
+	    </div>
+
+	    <div class="form-group row form-inline ">
+	      <h5>支払方法</h5>
+	    <span>
+	    <%= @order.payment_method_i18n %>
+	    </span>
+	    </div>
+
+	    <div class="form-group row form-inline ">
+	      <h5>注文ステータス</h5>
+	    <span>
+	    <%= @order.status_i18n %>
+	    </span>
+	    <%= form_with model: [:admin, @order] do |f| %>
+	    <%= f.select :status, Order.statuses.map { |k, v| [I18n.t("enums.order.status.#{k}"), v]} %>
+	    <%= f.submit '更新', class:"btn btn-success" %>
+	    <% end %>
+	    </div>
+
+
+	  </div>
+	</div>
+
+	<div class="row">
+	  <div class="col-md-7 offset-md-1">
+	  	<table class="table">
+          <thead>
+            <tr>
+              <th>商品名</th>
+              <th>単価（税込）</th>
+              <th>数量</th>
+              <th>小計</th>
+              <th>製作ステータス</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @order_details.each do |order_detail| %>
+          <tr>
+            <th>
+              <span>
+                <%= order_detail.item.name %>
+              </span>
+            </th>
+            <th>
+              <span>
+               <%= order_detail.item.with_tax_price %>
+              </span>
+            </th>
+            <th>
+              <span>
+               <%= order_detail.amount %>
+              </span>
+            </th>
+            <th>
+              <span>
+               <%= order_detail.subtotal %>
+              </span>
+            </th>
+            <th>
+              <%= form_with model: [:admin, order_detail] do |f| %>
+			  <%= f.select :making_status, OrderDetail.making_statuses_i18n.map { |k, v| [v, k]} %>
+
+
+              <span>
+              <%= f.submit '更新', class:"btn btn-success" %>
+              </span>
+              <% end %>
+            </th>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+
+	  </div>
+
+	  <div class="col-md-4">
+	  	<div class="form-group row form-inline ">
+	      <h5>商品合計</h5>
+	    <span>
+	    <%= @total %>円
+	    </span>
+	    </div>
+
+	    <div class="form-group row form-inline ">
+	      <h5>送料</h5>
+	    <span>
+	    <%= @order.postage %>円
+	    </span>
+	    </div>
+
+	    <div class="form-group row form-inline ">
+	      <h5>請求金額合計</h5>
+	    <span>
+	    <%= @total + @order.postage %>円
+	    </span>
+	    </div>
+
+	  </div>
+	</div>
+</div>

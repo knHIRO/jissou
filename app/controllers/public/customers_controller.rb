@@ -1,12 +1,11 @@
 class Public::CustomersController < ApplicationController
   def show
-    @customer = Customer.new
-    @customers = Customer.all
+    @customer = current_customer
 
   end
 
   def edit
-    @customer = Customer.new
+    @customer = current_customer
   end
 
   def confirmation
@@ -14,15 +13,19 @@ class Public::CustomersController < ApplicationController
   end
 
   def exit
-    redirect_to '/'
+    @customer = current_customer
+    if @customer.update(is_deleted: true)
+      sign_out current_customer
+    end
+     redirect_to root_path
 
   end
 
   def update
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
     if @customer.update(customer_params)
-      flash[:notice]="You have updated user successfully."
-      redirect_to public_customer_path(@customer.id)
+      #flash[:notice]="You have updated user successfully."
+      redirect_to public_customers_path
     else
       render :edit
     end
@@ -31,6 +34,6 @@ class Public::CustomersController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number, :is_deleted)
+    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number, :is_deleted, :email)
   end
 end

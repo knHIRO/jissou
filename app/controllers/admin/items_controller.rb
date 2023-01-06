@@ -2,7 +2,7 @@ class Admin::ItemsController < ApplicationController
 
   def index
     @item = Item.new
-    @items = Item.all
+    @items = Item.page(params[:page])
     @genres = Genre.all
   end
   def new
@@ -13,23 +13,23 @@ class Admin::ItemsController < ApplicationController
     # １.&2. データを受け取り新規登録するためのインスタンス作成
     @item= Item.new(item_params)
 
-    #@book.user_id = current_user.id
+    #@item.user_id = current_user.id
     # 3. データをデータベースに保存するためのsaveメソッド実行
     if @item.save
     # 4. トップ画面へリダイレクト
-    flash[:notice]="You have created book successfully."
+    #flash[:notice]="You have created book successfully."
 
     redirect_to admin_item_path(@item.id)
     else
     @items = Item.all
     #@user = current_user
-    render :index
+    render :new
     end
   end
 
   def show
-    @item = Item.new
-    @items = Item.find(params[:id])
+    #@item = Item.new
+    @item = Item.find(params[:id])
   end
 
   def edit
@@ -39,7 +39,7 @@ class Admin::ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)
-      flash[:notice]="You have updated user successfully."
+      #flash[:notice]="You have updated user successfully."
       redirect_to admin_item_path(@item.id)
     else
       render :edit

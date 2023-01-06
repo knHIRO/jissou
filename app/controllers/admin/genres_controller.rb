@@ -10,22 +10,22 @@ class Admin::GenresController < ApplicationController
 
   def create
     @genre = Genre.new(genre_params)
-
+    @genres = Genre.all
     if @genre.save
 
-    flash[:notice]="You have created book successfully."
+    #flash[:notice]="You have created genre successfully."
 
     redirect_to admin_genres_path
 
     else
-    @genres = Book.all
     render :index
     end
 
   end
   def update
-    genre = Genre.find(params[:id])
-    if genre.update(genre_params)
+    @genre = Genre.find(params[:id])
+
+    if @genre.update(genre_params)
     redirect_to admin_genres_path
     else
     render :edit

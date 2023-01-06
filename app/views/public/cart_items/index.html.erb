@@ -1,74 +1,81 @@
 <div class="container">
 	<div class="row">
-	  <div class="offset-md-1 col-md-10 offset-md-1">
+	  <div class="col-md-4">
 	    <h2>ショッピングカート</h2>
+	  </div>
+	  <div class=" offset-md-4 col-md-4">
 	    <%= form_with model: [:public, @cart_item] do |f| %>
 	    <span>
        <%= link_to 'カートを空にする',  cart_items_destroy_all_path(@cart_item), method: :delete, class:"btn btn-sm btn-danger destroy", "data-confirm" => "本当に削除しますか？" %>
       </span>
       <% end %>
-	    ＃戻して
-	    <div class="col-md-10">
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th>商品名</th>
-            <th>単価(税込)</th>
-            <th>数量</th>
-            <th>小計</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-        <% @cart_items.each do |cart_item| %>
-            <tr>
-              <th>
-                <%= image_tag cart_item.item.get_profile_image(100,100) %>
-                <span>
-                  <%= cart_item.item.name %>
-                </span>
-              </th>
-              <th>
-                <span>
-                 <%#= cart_item.item.price %>
-                 <%= cart_item.item.with_tax_price %>
-                </span>
-              </th>
-              <th>
-                <span>
-                 <%= cart_item.amount %>
-                </span>
-              </th>
-              <th>
-                <span>
-                 <%#= cart_item.amount %>
-                 <%= cart_item.subtotal %>
-                 <% @tortal +=  cart_item.subtotal %>
-                </span>
-              </th>
-              <th>
-                <span>
-                 <%= link_to '削除する',  public_cart_item_path(cart_item), method: :delete, class:"btn btn-sm btn-danger destroy", "data-confirm" => "本当に削除しますか？" %>
-                </span>
-              </th>
+    </div>
+  </div>
+  <div class="row">
+	  <div class="col-md-12">
+    <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>商品名</th>
+        <th>単価(税込)</th>
+        <th>数量</th>
+        <th>小計</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @cart_items.each do |cart_item| %>
+      <tr>
+        <th>
+          <%= image_tag cart_item.item.get_profile_image(50,100) %>
+          <span>
+            <%= cart_item.item.name %>
+          </span>
+        </th>
+        <th>
+          <span>
+           <%#= cart_item.item.price %>
+           <%= cart_item.item.with_tax_price %>
+          </span>
+        </th>
+        <th>
+          <%= form_with model: [:public, cart_item] do |f| %>
+          <span>
+            <%#= cart_item.amount %>
+            <%= f.select :amount, *[1..9] %>
+            <%= f.submit '変更', class:"btn btn-sm btn-success" %>
+          </span>
+          <% end %>
+        </th>
+        <th>
+          <span>
+           <%#= cart_item.amount %>
+           <%= cart_item.subtotal %>
+           <% @tortal +=  cart_item.subtotal %>
+          </span>
+        </th>
+        <th>
+          <span>
+           <%= link_to '削除する',  public_cart_item_path(cart_item), method: :delete, class:"btn btn-sm btn-danger destroy", "data-confirm" => "本当に削除しますか？" %>
+          </span>
+        </th>
 
-            </tr>
-        <% end %>
-        </tbody>
+      </tr>
+      <% end %>
+      </tbody>
       </table>
-      </div>
     </div>
   </div>
 
+
   <div class="row">
-    <div class="offset-md-1 col-md-10 offset-md-1">
-      <div class="col-md-3 offset-md-3">
+    <div class="offset-md-1 col-md-3">
       <span>
        <%= link_to '買い物を続ける', root_path, class:"btn btn-sm btn-success edit" %>
       </span>
-      </div>
+    </div>
 
-      <div class="col-md-3">
+    <div class="offset-md-4 col-md-4">
       <table class="table table-bordered">
         <tbody>
         <tr>
@@ -82,8 +89,11 @@
         </tr>
         </tbody>
       </table>
-      </div>
     </div>
   </div>
+  <center>
+  <% if @cart_items.any? %>
   <%= link_to '情報入力に進む', new_public_order_path, class:"btn btn-sm btn-success edit" %>
+  <% end %>
+  </center>
 </div>

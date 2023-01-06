@@ -1,6 +1,5 @@
 class Admin::CustomersController < ApplicationController
   def index
-    @customer = Customer.new
     @customers = Customer.all
   end
 
@@ -11,12 +10,13 @@ class Admin::CustomersController < ApplicationController
 
   def edit
    @customer = Customer.find(params[:id])
+   @customers = Customer.find(params[:id])
   end
 
   def update
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
-      flash[:notice]="You have updated user successfully."
+      #flash[:notice]="You have updated user successfully."
       redirect_to admin_customer_path(@customer.id)
     else
       render :edit

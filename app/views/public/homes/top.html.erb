@@ -1,5 +1,4 @@
 <div class="container">
-  <h2>topページ</h2>
 	<div class="row">
 	  <div class="col-md-3" >
 	    <%= render 'public/items/info', genres: @genres %>
@@ -16,7 +15,25 @@
   <div class="row">
     <div class="offset-md-4 col-md-8">
     <h2>新着商品</h2>
-
+      <div class="d-flex flex-wrap">
+        <% @items.each do |item| %>
+          <div style="width:20%">
+            <%= link_to public_item_path(item) do %>
+            <%= image_tag item.get_profile_image(100,100) %>
+            <% end %>
+            <p><%= item.name %></p>
+            <p>¥<%= item.price %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="offset-md-4 col-md-8">
+      <li>
+      <%= link_to public_items_path do %>全ての商品を見る
+      <% end %>
+      </li>
     </div>
   </div>
 </div>

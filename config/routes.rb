@@ -15,11 +15,11 @@ get 'public' => 'public/homes#about', as: 'about'
 get 'public/customers/confirmation' => 'public/customers#confirmation', as: 'customers_confirmation'
 post 'public/orders/confirmation' => 'public/orders#confirmation', as: 'orders_confirmation'
 get 'public/orders/completion' => 'public/orders#completion',as: 'orders_completion'
-patch 'public/customers' => 'public/customers#exit', as: 'customers_exit'
+patch 'public/customers/exit' => 'public/customers#exit', as: 'customers_exit'
 delete 'public/cart_items' => 'public/cart_items#destroy_all', as: 'cart_items_destroy_all'
 namespace :public do
  resources :items, only: [:index, :show]
- resource :customers, only:[:show, :edit]
+ resource :customers, only:[:show, :edit, :update]
  resources :cart_items, only: [:index, :create, :update, :destroy]
  resources :orders, only:[:new, :index, :show, :create]
  resources :addresses, only:[:index, :edit, :create, :update, :destroy]

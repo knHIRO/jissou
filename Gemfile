@@ -61,4 +61,6 @@ gem "net-smtp"
 
 gem 'pry-byebug'
 
- gem "enum_help"
+gem "enum_help"
+ 
+gem 'kaminari','~> 1.2.1' 

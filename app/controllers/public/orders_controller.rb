@@ -5,8 +5,13 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.new
-    @orders = Order.all
+    @order = Order.find(params[:id])
+    @order_details = @order.order_details
+    # @total = 0
+    # @order_details.each do |order_detail|
+    # @total += order_detail.subtotal
+    # end
+     @total = @order_details.sum(&:subtotal)
   end
 
   def completion
@@ -59,7 +64,7 @@ class Public::OrdersController < ApplicationController
       #カートアイテムを削除
     current_customer.cart_items.destroy_all
     # 4. トップ画面へリダイレクト
-    flash[:notice]="You have created book successfully."
+    #flash[:notice]="You have created book successfully."
 
     redirect_to orders_completion_path(@order.id)
     else
